@@ -55,21 +55,19 @@ import { useAuth } from '~/composables/useAuth';
   </div>
 </template>
 
-<script lang="ts">
-export default {
+<script setup lang="ts">
+const currentUserStatus = ref(null);
+const nuxtApp = useNuxtApp();
+const { currentSession } = useAuth();
+
+definePageMeta({
+  layout: "authenticated",
   head() {
     return {
       title: "テストです",
     };
   },
-  layout: "authenticated",
-};
-</script>
-
-<script setup lang="ts">
-const currentUserStatus = ref(null);
-const nuxtApp = useNuxtApp();
-const { currentSession } = useAuth();
+});
 
 const changeStatus = async (status: string) => {
   const { data: userStatus } = await nuxtApp.$supabase
@@ -81,6 +79,7 @@ const changeStatus = async (status: string) => {
 };
 
 onMounted(async () => {
+  if (!currentSession.value) return;
   const { data: userStatus } = await nuxtApp.$supabase
     .from("user_statuses")
     .select("*")
