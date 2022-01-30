@@ -1,0 +1,14 @@
+name = "urin"
+type = "javascript"
+account_id = "your_account_id"
+workers_dev = true
+route = ""
+zone_id = ""
+
+[site]
+bucket = ".output/public"
+entry-point = ".output"
+
+[build]
+command = "NITRO_PRESET=cloudflare yarn nuxt build"
+upload.format = "service-worker"
