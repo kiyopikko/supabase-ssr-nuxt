@@ -12,6 +12,6 @@
     "@supabase/supabase-js": "^1.29.1",
     "sanitize.css": "^13.0.0",
     "sass": "^1.47.0",
-    "sass-loader": "^12.4.0"
+    "sass-loader": "^12.5.0"
   }
 }
