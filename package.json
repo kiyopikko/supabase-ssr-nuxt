@@ -9,7 +9,7 @@
     "nuxt3": "latest"
   },
   "dependencies": {
-    "@supabase/supabase-js": "^1.29.1",
+    "@supabase/supabase-js": "^1.33.2",
     "sanitize.css": "^13.0.0",
     "sass": "^1.47.0",
     "sass-loader": "^12.4.0"
