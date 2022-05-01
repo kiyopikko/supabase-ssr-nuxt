@@ -1,13 +1,16 @@
 <template>
-  <div class="container"></div>
+  <div class="container">
+    <button @click="signOut">sign out</button>
+  </div>
 </template>
 
 <script setup lang="ts">
-const nuxtApp = useNuxtApp();
+const router = useRouter();
+const client = useSupabaseClient();
 
-onMounted(() => {
-  nuxtApp.$supabase.auth.signOut().then(() => {
-    location.href = "/";
-  });
-});
+const signOut = async () => {
+  const { error } = await client.auth.signOut();
+  if (error) return;
+  location.href = "/";
+};
 </script>

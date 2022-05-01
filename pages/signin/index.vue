@@ -8,30 +8,21 @@
   </div>
 </template>
 
-<script lang="ts">
-export default {
-  head() {
-    return {
-      title: "ログイン",
-    };
-  },
-};
-</script>
-
 <script setup lang="ts">
-const nuxtApp = useNuxtApp();
+const router = useRouter();
+const client = useSupabaseClient();
 
 const email = ref("");
 const password = ref("");
-const submit = () => {
-  nuxtApp.$supabase.auth
-    .signIn({
-      email: email.value,
-      password: password.value,
-    })
-    .then(() => {
-      location.href = "/";
-    });
+
+const submit = async () => {
+  const session = await client.auth.signIn({
+    email: email.value,
+    password: password.value,
+  });
+  if (session) {
+    location.href = "/";
+  }
 };
 </script>
 

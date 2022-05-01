@@ -42,12 +42,12 @@ const statusMap = {
 
 const nuxtApp = useNuxtApp();
 const { params } = useRoute();
-const { data: userStatuses } = useFetch<string, any[]>(
+const { data: userStatuses } = useFetch<string, string, any[]>(
   `${nuxtApp.$config.SUPABASE_URL}/rest/v1/user_statuses?select=*&username=eq.${params.username}`,
   {
     headers: {
-      apikey: nuxtApp.$config.SUPABASE_ANON_KEY,
-      Authorization: `Bearer ${nuxtApp.$config.SUPABASE_ANON_KEY}`,
+      apikey: nuxtApp.$config.SUPABASE_KEY,
+      Authorization: `Bearer ${nuxtApp.$config.SUPABASE_KEY}`,
     },
   }
 );

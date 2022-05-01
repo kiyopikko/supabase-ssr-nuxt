@@ -20,18 +20,18 @@ export default {
 </script>
 
 <script setup lang="ts">
-const nuxtApp = useNuxtApp();
+const client = useSupabaseClient();
 
 const email = ref("");
 const password = ref("");
 const username = ref("");
 
 const submit = async () => {
-  const session = await nuxtApp.$supabase.auth.signUp({
+  const session = await client.auth.signUp({
     email: email.value,
     password: password.value,
   });
-  await nuxtApp.$supabase
+  await client
     .from("user_statuses")
     .insert({ id: session.user.id, status: "home", username: username.value });
   location.href = "/";

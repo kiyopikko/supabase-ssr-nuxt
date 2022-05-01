@@ -1,6 +1,5 @@
-import { useAuth } from '~/composables/useAuth';
 <template>
-  <div>
+  <NuxtLayout name="authenticated">
     <div class="container">
       <h1 class="headline">
         Hi {{ currentUserStatus ? currentUserStatus.username : "" }}, you are
@@ -52,38 +51,29 @@ import { useAuth } from '~/composables/useAuth';
         </div>
       </div>
     </div>
-  </div>
+  </NuxtLayout>
 </template>
 
 <script setup lang="ts">
 const currentUserStatus = ref(null);
-const nuxtApp = useNuxtApp();
-const { currentSession } = useAuth();
-
-definePageMeta({
-  layout: "authenticated",
-  head() {
-    return {
-      title: "テストです",
-    };
-  },
-});
+const user = useSupabaseUser();
+const client = useSupabaseClient();
 
 const changeStatus = async (status: string) => {
-  const { data: userStatus } = await nuxtApp.$supabase
+  const { data: userStatus } = await client
     .from("user_statuses")
     .update({ status })
-    .match({ id: currentSession.value.user.id })
+    .match({ id: user.value.id })
     .single();
   currentUserStatus.value = userStatus;
 };
 
 onMounted(async () => {
-  if (!currentSession.value) return;
-  const { data: userStatus } = await nuxtApp.$supabase
+  if (!user.value) return;
+  const { data: userStatus } = await client
     .from("user_statuses")
     .select("*")
-    .eq("id", currentSession.value.user.id)
+    .eq("id", user.value.id)
     .single();
   currentUserStatus.value = userStatus;
 });

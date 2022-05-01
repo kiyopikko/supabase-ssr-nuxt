@@ -1,4 +1,4 @@
-import { defineNuxtConfig } from "nuxt3";
+import { defineNuxtConfig } from "nuxt";
 
 // https://v3.nuxtjs.org/docs/directory-structure/nuxt.config
 export default defineNuxtConfig({
@@ -14,6 +14,7 @@ export default defineNuxtConfig({
   },
   publicRuntimeConfig: {
     SUPABASE_URL: process.env.SUPABASE_URL,
-    SUPABASE_ANON_KEY: process.env.SUPABASE_ANON_KEY,
+    SUPABASE_KEY: process.env.SUPABASE_KEY,
   },
+  modules: ["@nuxtjs/supabase"],
 });

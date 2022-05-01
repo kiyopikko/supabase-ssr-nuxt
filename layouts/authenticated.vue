@@ -6,18 +6,16 @@
 </template>
 
 <script setup lang="ts">
-import { useAuth } from "~/composables/useAuth";
-
-const { currentSession } = useAuth();
+const user = useSupabaseUser();
 const router = useRouter();
 
 const currentUser = ref(null);
 
 onMounted(() => {
-  if (!currentSession.value) {
-    router.replace("/signin");
+  if (!user.value) {
+    router.push("/signin");
     return;
   }
-  currentUser.value = currentSession.value.user;
+  currentUser.value = user.value;
 });
 </script>
