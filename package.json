@@ -9,7 +9,7 @@
     "nuxt": "3.0.0-rc.1"
   },
   "dependencies": {
-    "@nuxtjs/supabase": "^0.1.10",
+    "@nuxtjs/supabase": "^0.1.15",
     "sanitize.css": "^13.0.0",
     "sass": "^1.51.0"
   }
