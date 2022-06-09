@@ -11,6 +11,6 @@
   "dependencies": {
     "@nuxtjs/supabase": "^0.1.10",
     "sanitize.css": "^13.0.0",
-    "sass": "^1.51.0"
+    "sass": "^1.52.3"
   }
 }
