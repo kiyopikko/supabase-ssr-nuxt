@@ -6,7 +6,7 @@
     "start": "node .output/server/index.mjs"
   },
   "devDependencies": {
-    "nuxt": "3.0.0-rc.1"
+    "nuxt": "3.0.0-rc.9"
   },
   "dependencies": {
     "@nuxtjs/supabase": "^0.1.10",
