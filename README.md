@@ -1,5 +1,7 @@
 # Nuxt + Supabase + Cloudflare Workers Demo
 
+Demo SSR: https://urin.kiyopikko.workers.dev/kiyopikko
+
 - Nuxt3 SSR
 - Supabase
 - Cloudflare Workers
