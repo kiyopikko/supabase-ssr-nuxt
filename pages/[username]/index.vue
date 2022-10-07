@@ -34,6 +34,12 @@
 </template>
 
 <script setup lang="ts">
+interface UserStatus {
+  id: string;
+  username: string;
+  status: string;
+}
+
 const statusMap = {
   home: "🏠",
   commuting: "🚌",
@@ -42,7 +48,7 @@ const statusMap = {
 
 const nuxtApp = useNuxtApp();
 const { params } = useRoute();
-const { data: userStatuses } = useFetch<string, string, any[]>(
+const { data: userStatuses } = useFetch<UserStatus[]>(
   `${nuxtApp.$config.SUPABASE_URL}/rest/v1/user_statuses?select=*&username=eq.${params.username}`,
   {
     headers: {

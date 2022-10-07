@@ -4,7 +4,7 @@
       <input type="text" v-model="username" />
       <input type="email" v-model="email" />
       <input type="password" v-model="password" />
-      <input type="submit" value="新規登録" />
+      <input type="submit" value="新規登録" :disabled="true" />
     </form>
   </div>
 </template>
