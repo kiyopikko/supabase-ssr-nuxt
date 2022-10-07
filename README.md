@@ -1,6 +1,8 @@
-# Nuxt 3 Minimal Starter
+# Nuxt + Supabase + Cloudflare Workers Demo
 
-We recommend to look at the [documentation](https://v3.nuxtjs.org).
+- Nuxt3 SSR
+- Supabase
+- Cloudflare Workers
 
 ## Setup
 
@@ -20,10 +22,8 @@ yarn dev
 
 ## Production
 
-Build the application for production:
+Needs to create `wrangler.toml` from `wrangler.example.toml` before deploying.
 
 ```bash
-yarn build
+wrangler publish
 ```
-
-Checkout the [deployment documentation](https://v3.nuxtjs.org/docs/deployment).
